@@ -16,7 +16,7 @@ public interface QuestionRepository extends JpaRepository<Questions,Integer> {
     List<Questions> findByCategory(String category);
     List<Questions> findByCategoryAndLevel(String category, String level);
 
-    @Query("SELECT q FROM Questions q WHERE q.category = :category ORDER BY function('RANDOM')")
+    @Query("SELECT q.id FROM Questions q WHERE q.category = :category ORDER BY function('RANDOM')")
     List<Integer> findRandomQuestionByCategory(@Param("category") String category, Pageable pageable);
 
 }
